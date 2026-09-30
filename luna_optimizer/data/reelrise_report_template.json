@@ -1,0 +1,17 @@
+{
+  "source": "manual_or_reelrise_export",
+  "video_id": "",
+  "virality_score": null,
+  "safety_score": null,
+  "hook": {"start_seconds": null, "strength": null, "notes": ""},
+  "pacing": {"score": null, "notes": ""},
+  "visual_attention": {"score": null, "notes": ""},
+  "on_screen_text": {"score": null, "notes": ""},
+  "payoff": {"score": null, "notes": ""},
+  "audio": {"score": null, "notes": ""},
+  "trend_fit": {"score": null, "notes": ""},
+  "retention_risks": [],
+  "fixes": [],
+  "safety_flags": [],
+  "creator_notes": ""
+}
