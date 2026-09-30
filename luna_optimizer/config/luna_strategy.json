@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "brand": {
+    "name": "Luna",
+    "type": "AI virtual lifestyle creator",
+    "niche": "AI lifestyle + relatable pretty-girl creator",
+    "age": 22,
+    "identity_lock": "Preserve Luna's exact face, freckles, hair identity, body proportions and build throughout every generation.",
+    "paused_topics": ["fencing"],
+    "platforms": ["TikTok", "Instagram Reels"]
+  },
+  "video_defaults": {
+    "duration_seconds": 10,
+    "hook_seconds": 3.5,
+    "aspect_ratio": "9:16"
+  },
+  "pillars": [
+    "relatable micro-comedy",
+    "pretty-girl lifestyle",
+    "fashion/outfits",
+    "beauty/glow-up",
+    "luxury lifestyle",
+    "curiosity/mini-stories"
+  ],
+  "signals": {
+    "hook": 0.25,
+    "pacing": 0.15,
+    "visual_attention": 0.15,
+    "on_screen_text": 0.10,
+    "payoff": 0.15,
+    "shareability": 0.10,
+    "commentability": 0.05,
+    "safety": 0.05
+  },
+  "metrics": [
+    "views",
+    "likes",
+    "comments",
+    "shares",
+    "saves",
+    "profile_visits",
+    "followers_gained",
+    "average_watch_time_seconds",
+    "completion_rate",
+    "posting_time"
+  ]
+}
