@@ -34,8 +34,14 @@ jobs:
             --report "${{ inputs.report_path }}" \
             --performance "${{ inputs.performance_path }}"
 
-      - name: Upload production brief
+      - name: Build ChatCut bridge manifest
+        run: |
+          python3 luna_optimizer/scripts/chatcut_bridge.py             --brief luna_optimizer/outputs/luna_video_brief.md             --output luna_optimizer/outputs/chatcut_edit_plan.json
+
+      - name: Upload Luna + ChatCut edit package
         uses: actions/upload-artifact@v4
         with:
-          name: luna-video-brief
-          path: luna_optimizer/outputs/luna_video_brief.md
+          name: luna-chatcut-edit-package
+          path: |
+            luna_optimizer/outputs/luna_video_brief.md
+            luna_optimizer/outputs/chatcut_edit_plan.json

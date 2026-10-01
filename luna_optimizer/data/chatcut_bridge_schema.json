@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "tool": "chatcut",
+  "workflow": "luna-video-edit",
+  "required_fields": [
+    "source_video",
+    "timeline",
+    "captions",
+    "format"
+  ],
+  "note": "This manifest is intentionally provider-neutral. A future authenticated ChatCut MCP/Codex session can consume it and apply edits; no ChatCut secret is stored in GitHub."
+}
