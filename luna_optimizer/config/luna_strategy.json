@@ -1,13 +1,21 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "brand": {
     "name": "Luna",
-    "type": "AI virtual lifestyle creator",
-    "niche": "AI lifestyle + relatable pretty-girl creator",
-    "age": 22,
+    "type": "AI virtual character, mystery-narrative creator",
+    "niche": "quiet luxury, unexplained traveling woman, composed and unaware of the camera",
     "identity_lock": "Preserve Luna's exact face, freckles, hair identity, body proportions and build throughout every generation.",
+    "character_rules": [
+      "never direct eye contact with camera",
+      "never smiles at or for the viewer",
+      "no spoken narration or dialogue",
+      "no CTA of any kind, never asks viewer to comment, follow, or share",
+      "never explains who she is or why she does anything",
+      "captions and on-screen text raise questions, never answer them",
+      "consistent visual signature: same black bag, low ponytail, emerald as signature color"
+    ],
     "paused_topics": ["fencing"],
-    "platforms": ["TikTok", "Instagram Reels"]
+    "platforms": ["TikTok", "Instagram Reels", "Instagram Carousel"]
   },
   "video_defaults": {
     "duration_seconds": 10,
@@ -15,12 +23,12 @@
     "aspect_ratio": "9:16"
   },
   "pillars": [
-    "relatable micro-comedy",
-    "pretty-girl lifestyle",
-    "fashion/outfits",
-    "beauty/glow-up",
-    "luxury lifestyle",
-    "curiosity/mini-stories"
+    "quiet luxury travel",
+    "hotel and estate settings",
+    "unresolved small gestures",
+    "golden hour and night cinematography",
+    "recurring visual motifs (bag, ring, color)",
+    "mystery and curiosity, never resolved"
   ],
   "signals": {
     "hook": 0.25,
