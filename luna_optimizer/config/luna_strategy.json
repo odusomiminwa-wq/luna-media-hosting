@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "brand": {
     "name": "Luna",
     "type": "AI virtual character, mystery-narrative creator",
@@ -14,8 +14,14 @@
       "captions and on-screen text raise questions, never answer them",
       "consistent visual signature: same black bag, low ponytail, emerald as signature color"
     ],
-    "paused_topics": ["fencing"],
-    "platforms": ["TikTok", "Instagram Reels", "Instagram Carousel"]
+    "paused_topics": [
+      "fencing"
+    ],
+    "platforms": [
+      "TikTok",
+      "Instagram Reels",
+      "Instagram Carousel"
+    ]
   },
   "video_defaults": {
     "duration_seconds": 10,
@@ -28,15 +34,16 @@
     "unresolved small gestures",
     "golden hour and night cinematography",
     "recurring visual motifs (bag, ring, color)",
-    "mystery and curiosity, never resolved"
+    "mystery and curiosity, never resolved",
+    "luxury storytelling through visual lore rather than spoken exposition"
   ],
   "signals": {
     "hook": 0.25,
     "pacing": 0.15,
     "visual_attention": 0.15,
-    "on_screen_text": 0.10,
+    "on_screen_text": 0.1,
     "payoff": 0.15,
-    "shareability": 0.10,
+    "shareability": 0.1,
     "commentability": 0.05,
     "safety": 0.05
   },
@@ -51,5 +58,126 @@
     "average_watch_time_seconds",
     "completion_rate",
     "posting_time"
-  ]
+  ],
+  "trend_intelligence": {
+    "current_direction": "story-led luxury content: aspirational visuals plus human/lore/detail-driven narrative",
+    "research_window": "2026",
+    "principles": [
+      "Luxury short-form is moving from prestige-only visuals toward narrative-led video.",
+      "Luxury discovery is increasingly creator-led and identity-driven rather than purely status-driven.",
+      "TikTok's 2026 trend framing emphasizes reality, insider detail, lore and curiosity-driven discovery over overly polished fantasy.",
+      "Small details, craft, heritage, objects and rituals can carry the story without requiring exposition.",
+      "For Luna, adapt these trends visually: mystery clues, recurring objects, unexplained access, quiet rituals and unresolved endings."
+    ],
+    "story_formulas": [
+      {
+        "id": "unexplained-arrival",
+        "name": "The Unexplained Arrival",
+        "structure": "Start with Luna already entering an exclusive place; reveal one clue that implies she belongs there; end before the reason is explained.",
+        "best_for": [
+          "hotel",
+          "estate",
+          "private-club",
+          "airport",
+          "car"
+        ]
+      },
+      {
+        "id": "object-with-history",
+        "name": "The Object With History",
+        "structure": "Open on a recurring luxury object or detail; connect it visually to Luna; reveal a second clue; cut before its significance is explained.",
+        "best_for": [
+          "bag",
+          "ring",
+          "watch",
+          "key",
+          "letter",
+          "jewelry"
+        ]
+      },
+      {
+        "id": "ritual-as-luxury",
+        "name": "The Quiet Ritual",
+        "structure": "Show a precise, understated luxury ritual; introduce one unusual detail; finish on the detail rather than the spectacle.",
+        "best_for": [
+          "hotel",
+          "tea",
+          "dressing",
+          "spa",
+          "travel",
+          "dining"
+        ]
+      },
+      {
+        "id": "access-without-explanation",
+        "name": "Access Without Explanation",
+        "structure": "Show Luna moving through a place most viewers would expect restricted access to; use calm behavior and one visual clue instead of explaining it.",
+        "best_for": [
+          "private-estate",
+          "lounge",
+          "yacht",
+          "runway",
+          "archive"
+        ]
+      },
+      {
+        "id": "curiosity-detour",
+        "name": "The Curiosity Detour",
+        "structure": "Open on an ordinary luxury scene, introduce a strange detail, follow it for several seconds, then stop at the moment the viewer expects an answer.",
+        "best_for": [
+          "travel",
+          "fashion",
+          "hotel",
+          "cars",
+          "architecture"
+        ]
+      },
+      {
+        "id": "heritage-clue",
+        "name": "The Heritage Clue",
+        "structure": "Use architecture, craftsmanship or an old object as the first clue; place Luna inside the scene; leave the historical connection implied rather than explained.",
+        "best_for": [
+          "historic-hotel",
+          "jewelry",
+          "fashion",
+          "estates",
+          "cars"
+        ]
+      },
+      {
+        "id": "wrong-detail",
+        "name": "The Wrong Detail",
+        "structure": "Everything looks perfectly luxurious except one detail that returning viewers can recognize; never point it out directly.",
+        "best_for": [
+          "recurring-series",
+          "fashion",
+          "hotel",
+          "bag",
+          "travel"
+        ]
+      },
+      {
+        "id": "held-stillness",
+        "name": "The Held Stillness",
+        "structure": "Build movement, then stop; hold on Luna or a meaningful object slightly longer than expected; cut before resolution.",
+        "best_for": [
+          "night",
+          "hotel",
+          "estate",
+          "car",
+          "window"
+        ]
+      }
+    ],
+    "trend_scoring": {
+      "proven_format": 0.15,
+      "narrative_hook": 0.15,
+      "visual_story": 0.15,
+      "curiosity_gap": 0.15,
+      "rewatch_trigger": 0.1,
+      "share_trigger": 0.1,
+      "adaptability": 0.1,
+      "luna_differentiation": 0.1
+    }
+  }
 }
