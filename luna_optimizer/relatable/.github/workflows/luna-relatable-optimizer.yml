@@ -1,0 +1,32 @@
+name: Luna Relatable Optimizer
+
+on:
+  workflow_dispatch:
+    inputs:
+      idea:
+        description: "Relatable Luna video idea"
+        required: true
+        type: string
+      report_path:
+        description: "Optional JSON analysis report"
+        required: false
+        default: ""
+        type: string
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run relatable optimizer
+        run: |
+          python3 luna_optimizer/relatable/scripts/relatable_optimizer.py \
+            --idea "${{ inputs.idea }}" \
+            --report "${{ inputs.report_path }}"
+      - name: Upload relatable brief
+        uses: actions/upload-artifact@v4
+        with:
+          name: luna-relatable-video-brief
+          path: luna_optimizer/relatable/outputs/relatable_video_brief.md
