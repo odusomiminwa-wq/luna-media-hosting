@@ -3,14 +3,13 @@ name: Luna Relatable Optimizer
 on:
   workflow_dispatch:
     inputs:
-      idea:
-        description: "Relatable Luna video idea"
+      video_url:
+        description: "Direct HTTPS URL to the source MP4"
         required: true
         type: string
-      report_path:
-        description: "Optional JSON analysis report"
-        required: false
-        default: ""
+      idea:
+        description: "Relatable Luna video idea/context"
+        required: true
         type: string
 
 jobs:
@@ -19,14 +18,44 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - name: Run relatable optimizer
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install video tools
         run: |
-          python3 luna_optimizer/relatable/scripts/relatable_optimizer.py \
-            --idea "${{ inputs.idea }}" \
-            --report "${{ inputs.report_path }}"
-      - name: Upload relatable brief
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-opencv
+
+      - name: Download source video
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --retry-all-errors             --output input.mp4             "${{ inputs.video_url }}"
+          test -s input.mp4
+          file input.mp4
+
+      - name: Analyze video
+        run: |
+          python3 luna_optimizer/relatable/scripts/video_analyzer.py             --video input.mp4             --out video_analysis.json
+
+      - name: Build relatable strategy brief
+        run: |
+          python3 luna_optimizer/relatable/scripts/relatable_optimizer.py             --idea "${{ inputs.idea }}"             --report video_analysis.json
+
+      - name: Create corrected social version
+        run: |
+          python3 luna_optimizer/relatable/scripts/optimize_video.py             --video input.mp4             --report video_analysis.json             --out luna_relatable_corrected.mp4
+
+      - name: Validate with existing Instagram optimizer
+        run: |
+          python3 tools/instagram_video_optimizer.py             luna_relatable_corrected.mp4             luna_instagram_ready.mp4
+
+      - name: Publish optimizer outputs
         uses: actions/upload-artifact@v4
         with:
-          name: luna-relatable-video-brief
-          path: luna_optimizer/relatable/outputs/relatable_video_brief.md
+          name: luna-relatable-optimized-video
+          path: |
+            video_analysis.json
+            luna_relatable_corrected.mp4
+            luna_instagram_ready.mp4
+            luna_optimizer/relatable/outputs/relatable_video_brief.md
+          retention-days: 7
