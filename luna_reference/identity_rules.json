@@ -1,0 +1,17 @@
+{
+  "character": "Luna",
+  "identity_lock": "Preserve exact face, freckles, hair identity, facial structure, body proportions and build.",
+  "required_reference_assets": [
+    "Luna_Master_Reference.jpg",
+    "Luna_Master_Video.mp4"
+  ],
+  "approved_reference_directories": [
+    "approved_styles",
+    "approved_references"
+  ],
+  "generation_policy": {
+    "reference_required": true,
+    "material_identity_drift": "reject_and_regenerate",
+    "preview_before_final": true
+  }
+}

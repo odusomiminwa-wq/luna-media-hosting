@@ -1,0 +1,142 @@
+{
+  "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
+  "version": "1.0.0",
+  "orchestrator": "Composio",
+  "production_engine": "Krea",
+  "durable_core": "GitHub:luna-media-hosting",
+  "preserve_existing_youtube_workflows": true,
+  "tiktok_publishing": "manual",
+  "instagram_publishing": "connected_confirmation_required",
+  "agents": [
+    [
+      "01",
+      "Luna Master Orchestrator",
+      "coordination, state, dependencies, approvals, retries, lineage"
+    ],
+    [
+      "02",
+      "Trend Intelligence Agent",
+      "current trends, audience interests, formats, sounds, creator signals"
+    ],
+    [
+      "03",
+      "Breakout / Outlier Analyzer",
+      "high-performing content structure and formula extraction"
+    ],
+    [
+      "04",
+      "Luna Strategy Agent",
+      "trend + outlier + brand + performance strategy selection"
+    ],
+    [
+      "05",
+      "Luna Concept Generator",
+      "concepts, scenes, narrative beats, motifs, endings"
+    ],
+    [
+      "06",
+      "Hook Optimizer",
+      "first-frame, first-second, text, curiosity, pattern interruption"
+    ],
+    [
+      "07",
+      "Story + Retention Agent",
+      "pacing, micro-payoffs, loops, climax, endings"
+    ],
+    [
+      "08",
+      "Content Test Matrix Agent",
+      "controlled creative experiments and test variables"
+    ],
+    [
+      "09",
+      "Luna Creative Director",
+      "visual production direction and cinematography"
+    ],
+    [
+      "10",
+      "Luna Reference / Identity Agent",
+      "persistent reference loading and identity enforcement"
+    ],
+    [
+      "11",
+      "Krea Production Agent",
+      "preview and final image/video production"
+    ],
+    [
+      "12",
+      "Identity Consistency Gate",
+      "hard identity pass/reject"
+    ],
+    [
+      "13",
+      "Video Quality / Technical Optimizer",
+      "technical media optimization using existing GitHub workers"
+    ],
+    [
+      "14",
+      "Instagram Reel Optimizer",
+      "Instagram-specific packaging and optimization"
+    ],
+    [
+      "15",
+      "TikTok Optimizer",
+      "TikTok-specific packaging and optimization"
+    ],
+    [
+      "16",
+      "Caption + SEO Agent",
+      "platform-specific captions, SEO, keywords, hashtags, CTA rules"
+    ],
+    [
+      "17",
+      "Platform Adaptation Agent",
+      "cross-platform packaging and delegation"
+    ],
+    [
+      "18",
+      "Publishing / Distribution Agent",
+      "publish routing and publishing records"
+    ],
+    [
+      "19",
+      "Cross-Platform Analytics Agent",
+      "metric collection and normalization"
+    ],
+    [
+      "20",
+      "Performance Feedback / Evolution Agent",
+      "evidence-based learning and strategy evolution"
+    ]
+  ],
+  "pipeline": [
+    "request",
+    "trend_intelligence",
+    "outlier_analysis",
+    "strategy",
+    "concept",
+    "hook",
+    "retention",
+    "test_matrix",
+    "creative_direction",
+    "reference_identity",
+    "krea_preview",
+    "approval",
+    "krea_final",
+    "identity_gate",
+    "technical_optimization",
+    "platform_adaptation",
+    "caption_seo",
+    "publishing",
+    "analytics",
+    "performance_feedback"
+  ],
+  "deduplication": {
+    "platform_adaptation": "single_owner",
+    "technical_optimization": "single_owner_reuses_existing_github_workers",
+    "reference_identity": "loader_enforcer",
+    "identity_gate": "independent_pass_reject",
+    "analytics": "measurement_only",
+    "performance_feedback": "learning_only"
+  }
+}
