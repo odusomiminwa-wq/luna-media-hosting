@@ -1,12 +1,20 @@
 {
   "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "orchestrator": "Composio",
   "production_engine": "Krea",
   "durable_core": "GitHub:luna-media-hosting",
   "preserve_existing_youtube_workflows": true,
   "tiktok_publishing": "manual",
   "instagram_publishing": "connected_confirmation_required",
+  "master_identity_asset": {
+    "image_path": "bda41f44-1431-4c80-b977-dc8011f8d88d.jpeg",
+    "video_path": "2026-10-04-204158891.mp4",
+    "source_repo": "odusomiminwa-wq/luna-media-hosting",
+    "source_branch": "main",
+    "identity_rules_path": "luna_reference/identity_rules.json",
+    "ingestion_policy": "retrieve_binary_bytes_before_visual_inspection"
+  },
   "agents": [
     [
       "01",
@@ -107,6 +115,66 @@
       "20",
       "Performance Feedback / Evolution Agent",
       "evidence-based learning and strategy evolution"
+    ],
+    [
+      "21",
+      "Brand Guardian Agent",
+      "brand integrity, safety, voice and visual standards"
+    ],
+    [
+      "22",
+      "PR & Media Intelligence Agent",
+      "press opportunities, media signals, authority building"
+    ],
+    [
+      "23",
+      "Journalist Outreach Agent",
+      "journalist discovery, pitch routing and outreach tracking"
+    ],
+    [
+      "24",
+      "Press Kit Agent",
+      "press kit, bio, assets and media-ready brand materials"
+    ],
+    [
+      "25",
+      "Search & Entity Agent",
+      "search presence, entity consistency and discoverability"
+    ],
+    [
+      "26",
+      "Impersonation Defense Agent",
+      "impersonation monitoring and escalation records"
+    ],
+    [
+      "27",
+      "Verification Readiness Agent",
+      "platform verification requirements and evidence readiness"
+    ],
+    [
+      "28",
+      "Milestone Engine Agent",
+      "growth milestones, evidence collection and readiness triggers"
+    ],
+    [
+      "29",
+      "Authority Intelligence / Blue Tick Coordinator",
+      "coordinates authority, PR and verification workflows"
+    ],
+    [
+      "30",
+      "Luna Binary Asset Retrieval Agent",
+      "retrieves master image/video as binary bytes from approved durable sources, validates size/type/hash and stages them for processing"
+    ],
+    [
+      "31",
+      "Luna Media Decode & Frame Extraction Agent",
+      "decodes staged binary media, extracts representative video frames/keyframes and creates inspection derivatives without altering masters"
+    ],
+    [
+      "32",
+      "Luna Asset Registry & Identity Loader Agent",
+      "registers verified master assets, maps them to identity_rules.json, exposes stable references to all downstream agents and blocks unverified substitutes"
     ]
   ],
   "pipeline": [
@@ -119,6 +187,9 @@
     "retention",
     "test_matrix",
     "creative_direction",
+    "binary_asset_retrieval",
+    "media_decode_frame_extraction",
+    "asset_registry_identity_loader",
     "reference_identity",
     "krea_preview",
     "approval",
@@ -129,14 +200,34 @@
     "caption_seo",
     "publishing",
     "analytics",
-    "performance_feedback"
+    "performance_feedback",
+    "brand_guardian",
+    "pr_media_intelligence",
+    "journalist_outreach",
+    "press_kit",
+    "search_entity",
+    "impersonation_defense",
+    "verification_readiness",
+    "milestone_engine",
+    "authority_coordinator"
   ],
+  "asset_integrity": {
+    "binary_retrieval_required": true,
+    "master_assets_immutable": true,
+    "inspect_derivatives_only": true,
+    "hash_before_and_after_stage": true,
+    "reject_on_corrupt_or_mismatched_media": true,
+    "never_generate_substitute_master": true
+  },
   "deduplication": {
     "platform_adaptation": "single_owner",
     "technical_optimization": "single_owner_reuses_existing_github_workers",
     "reference_identity": "loader_enforcer",
     "identity_gate": "independent_pass_reject",
     "analytics": "measurement_only",
-    "performance_feedback": "learning_only"
+    "performance_feedback": "learning_only",
+    "binary_asset_retrieval": "single_owner",
+    "media_decode_frame_extraction": "single_owner",
+    "asset_registry_identity_loader": "single_owner"
   }
 }
