@@ -1,0 +1,8 @@
+{
+  "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
+  "active_version": "3.0.0",
+  "active_config": "luna_engine/LUNA_SOCIAL_MEDIA_CONTENT_ENGINE_V3.json",
+  "upgrade_spec": "luna_engine/LUNA_ENGINE_V3_UPGRADE_SPEC.md",
+  "base_version": "2.0.0",
+  "activation": "v3 is the active adaptive layer; all v2 identity, binary-integrity and existing platform/authority workflows remain inherited."
+}
