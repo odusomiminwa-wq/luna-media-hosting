@@ -9,9 +9,28 @@
     "approved_styles",
     "approved_references"
   ],
+  "supplemental_reference_assets": {
+    "body_proportion_reference": {
+      "name": "Luna_Body_Proportion_Blue_Swimsuit.mp4",
+      "source": "ChatGPT Library",
+      "library_path": "/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4",
+      "role": "PRIMARY_BODY_PROPORTION_REFERENCE",
+      "rule": "Use for body proportions, silhouette, height-to-width relationships, limb proportions and build. Do not use it to replace the master face identity."
+    },
+    "face_identity_crosscheck": {
+      "name": "Luna_Face_Identity_Green_Dress.mp4",
+      "source": "ChatGPT Library",
+      "library_path": "/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4",
+      "role": "FACE_IDENTITY_CROSSCHECK",
+      "rule": "Use as a secondary visual identity cross-check for face, hairline, facial structure and visible identifying features."
+    }
+  },
   "generation_policy": {
     "reference_required": true,
     "material_identity_drift": "reject_and_regenerate",
-    "preview_before_final": true
+    "preview_before_final": true,
+    "body_reference_priority": "blue_swimsuit_reference",
+    "face_reference_priority": "existing_master_reference",
+    "secondary_face_crosscheck": "green_dress_reference"
   }
 }
