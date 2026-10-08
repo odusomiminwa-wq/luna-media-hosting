@@ -1,0 +1,107 @@
+{
+  "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
+  "version": "3.0.0",
+  "codename": "HOOK-RETENTION-GROWTH LOOP",
+  "base_engine": "luna_engine/LUNA_SOCIAL_MEDIA_CONTENT_ENGINE.json",
+  "new_agents": [
+    [
+      "33",
+      "Trend Freshness & Audio Intelligence Agent",
+      "fresh trend/audio evidence; timestamping; no unsupported viral claims"
+    ],
+    [
+      "34",
+      "Hook Forensics & Pattern Library Agent",
+      "first-frame/first-second/curiosity/interruption/audio/text/payoff analysis"
+    ],
+    [
+      "35",
+      "Retention Diagnostics Agent",
+      "skip rate, average watch, watched percentage, completion/replay/engagement diagnostics"
+    ],
+    [
+      "36",
+      "Variant Generation & Winner Replication Agent",
+      "3-5 controlled variants from validated winners"
+    ],
+    [
+      "37",
+      "Experiment Allocation Agent",
+      "evidence/confidence/novelty/learning-value test selection"
+    ],
+    [
+      "38",
+      "Platform Timing & Packaging Intelligence Agent",
+      "platform-specific opening, duration, cover, caption, CTA and timing"
+    ],
+    [
+      "39",
+      "Content Formula Memory Agent",
+      "durable library of tested formulas, outcomes, confidence and failure modes"
+    ],
+    [
+      "40",
+      "Growth Loop Decision Agent",
+      "scale, iterate, hold, retire or investigate decisions"
+    ]
+  ],
+  "strategy": {
+    "positioning": "The virtual girl trying to live a ridiculously luxurious life while dealing with painfully relatable problems.",
+    "mix": {
+      "relatable_luxury_comedy": 0.4,
+      "ai_luxury_mini_stories": 0.25,
+      "fashion_transformation": 0.2,
+      "pure_cinematic_luxury": 0.1,
+      "wild_experiments": 0.05
+    },
+    "short_form": [
+      "0-1s unusual action",
+      "1-3s curiosity gap",
+      "3-5s anticipation",
+      "5-7s luxury/AI reveal",
+      "7-9s reaction/payoff/loop"
+    ]
+  },
+  "experiment_rules": {
+    "batch_size": 5,
+    "controlled_variables": [
+      "opening_action",
+      "curiosity_text",
+      "audio",
+      "pacing",
+      "payoff",
+      "luxury_context",
+      "relatable_problem",
+      "camera_distance",
+      "duration",
+      "caption_cta"
+    ],
+    "rule": "Change one major variable at a time when sample size permits.",
+    "anti_spam": "Do not publish near-identical variants back-to-back unless isolating one variable.",
+    "objective": "learning velocity, not posting volume"
+  },
+  "breakout_validation": {
+    "minimum_same_platform_outliers": 2,
+    "statuses": [
+      "candidate",
+      "validated",
+      "proven",
+      "fatigued",
+      "retired"
+    ]
+  },
+  "trend_rule": "Never label an audio/sound #1, viral, or currently trending without fresh platform evidence; otherwise use validated hook/format/visual trends.",
+  "current_learning": "Curiosity-driven unusual action followed by a luxury/AI payoff is the current LUNA retention hypothesis; test 3-5 controlled variations before declaring it a winner.",
+  "pipeline_additions": [
+    "trend_freshness_audio",
+    "hook_forensics",
+    "experiment_allocation",
+    "platform_timing_packaging",
+    "retention_diagnostics",
+    "winner_replication",
+    "growth_loop_decision",
+    "formula_memory"
+  ],
+  "integrity": "Existing v2 binary retrieval, immutable masters, hashing, frame extraction, registry and identity-gate rules remain mandatory.",
+  "upgrade_spec": "luna_engine/LUNA_ENGINE_V3_UPGRADE_SPEC.md"
+}
