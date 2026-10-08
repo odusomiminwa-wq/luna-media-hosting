@@ -1,42 +1,42 @@
 {
   "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
-  "registry_version": "1.1.0",
+  "registry_version": "2.0.0",
   "updated": "2026-10-08",
+  "active_identity_set": "LUNA_NEW_REFERENCE_SET_2026-10-08",
   "assets": [
+    {
+      "id": "luna-face-green-dress-20261008",
+      "file": "Luna_Face_Identity_Green_Dress.mp4",
+      "source": "ChatGPT Library",
+      "library_path": "/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4",
+      "role": "PRIMARY_FACE_AND_IDENTITY_REFERENCE",
+      "status": "ACTIVE_AUTHORITATIVE",
+      "immutable_master": true
+    },
     {
       "id": "luna-body-blue-swimsuit-20261008",
       "file": "Luna_Body_Proportion_Blue_Swimsuit.mp4",
       "source": "ChatGPT Library",
       "library_path": "/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4",
       "role": "PRIMARY_BODY_PROPORTION_REFERENCE",
-      "status": "APPROVED_FOR_BODY_REFERENCE",
-      "immutable_master": false
-    },
-    {
-      "id": "luna-face-green-dress-20261008",
-      "file": "Luna_Face_Identity_Green_Dress.mp4",
-      "source": "ChatGPT Library",
-      "library_path": "/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4",
-      "role": "FACE_IDENTITY_CROSSCHECK",
-      "status": "APPROVED_FOR_IDENTITY_CROSSCHECK",
-      "immutable_master": false
+      "status": "ACTIVE_AUTHORITATIVE",
+      "immutable_master": true
     }
   ],
-  "comparison_result": {
-    "blue_swimsuit_vs_green_dress": {
-      "face_match": "VISUAL_MATCH",
-      "hair_identity": "CONSISTENT",
-      "facial_structure": "CONSISTENT",
-      "body_build": "CONSISTENT",
-      "confidence": "HIGH_VISUAL_CONFIDENCE"
+  "retired_assets": [
+    {
+      "role": "FORMER_MASTER_REFERENCE_IMAGE",
+      "status": "RETIRED_FROM_ACTIVE_PIPELINE"
     },
-    "against_existing_luna_master": "NOT_YET_VERIFIED_IN_THIS_RUN",
-    "note": "The two newly supplied videos visibly depict the same character. The blue-swimsuit video is the stronger full-body proportion reference. Existing master identity remains authoritative until a direct three-way visual comparison is completed."
-  },
-  "safety_rules": [
-    "Never replace the existing master identity assets with supplemental references.",
-    "Never infer a master-face PASS from body-reference similarity alone.",
-    "Reject generation if the master face drifts materially.",
-    "Use the blue-swimsuit asset only for body proportion and build guidance."
-  ]
+    {
+      "role": "FORMER_MASTER_REFERENCE_VIDEO",
+      "status": "RETIRED_FROM_ACTIVE_PIPELINE"
+    }
+  ],
+  "identity_rules": {
+    "face": "Green-dress reference is authoritative.",
+    "body": "Blue-swimsuit reference is authoritative.",
+    "cross_check": "The two new references previously matched visually across face, hair, facial structure and body build.",
+    "generation_gate": "Any material deviation from the active reference set must be rejected and regenerated."
+  }
 }
