@@ -1,36 +1,36 @@
 {
   "character": "Luna",
-  "identity_lock": "Preserve exact face, freckles, hair identity, facial structure, body proportions and build.",
-  "required_reference_assets": [
-    "Luna_Master_Reference.jpg",
-    "Luna_Master_Video.mp4"
-  ],
+  "identity_version": "2026-10-08-new-reference-set",
+  "identity_lock": "Preserve the exact face, freckles, hair identity, facial structure, body proportions and build defined by the new approved reference set.",
+  "authoritative_reference_set": {
+    "face_identity": {
+      "name": "Luna_Face_Identity_Green_Dress.mp4",
+      "source": "ChatGPT Library",
+      "library_path": "/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4",
+      "role": "PRIMARY_FACE_AND_IDENTITY_REFERENCE"
+    },
+    "body_proportions": {
+      "name": "Luna_Body_Proportion_Blue_Swimsuit.mp4",
+      "source": "ChatGPT Library",
+      "library_path": "/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4",
+      "role": "PRIMARY_BODY_PROPORTION_REFERENCE"
+    }
+  },
+  "retired_reference_set": {
+    "prior_master_image": "RETIRED_FROM_ACTIVE_IDENTITY_PIPELINE",
+    "prior_master_video": "RETIRED_FROM_ACTIVE_IDENTITY_PIPELINE",
+    "policy": "Do not use old reference assets for new generation, identity matching, body matching, or visual conditioning."
+  },
   "approved_reference_directories": [
     "approved_styles",
     "approved_references"
   ],
-  "supplemental_reference_assets": {
-    "body_proportion_reference": {
-      "name": "Luna_Body_Proportion_Blue_Swimsuit.mp4",
-      "source": "ChatGPT Library",
-      "library_path": "/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4",
-      "role": "PRIMARY_BODY_PROPORTION_REFERENCE",
-      "rule": "Use for body proportions, silhouette, height-to-width relationships, limb proportions and build. Do not use it to replace the master face identity."
-    },
-    "face_identity_crosscheck": {
-      "name": "Luna_Face_Identity_Green_Dress.mp4",
-      "source": "ChatGPT Library",
-      "library_path": "/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4",
-      "role": "FACE_IDENTITY_CROSSCHECK",
-      "rule": "Use as a secondary visual identity cross-check for face, hairline, facial structure and visible identifying features."
-    }
-  },
   "generation_policy": {
     "reference_required": true,
     "material_identity_drift": "reject_and_regenerate",
     "preview_before_final": true,
-    "body_reference_priority": "blue_swimsuit_reference",
-    "face_reference_priority": "existing_master_reference",
-    "secondary_face_crosscheck": "green_dress_reference"
+    "face_reference_priority": "new_green_dress_reference",
+    "body_reference_priority": "new_blue_swimsuit_reference",
+    "old_references_allowed": false
   }
 }
