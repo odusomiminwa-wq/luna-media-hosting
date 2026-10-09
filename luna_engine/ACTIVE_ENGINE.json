@@ -1,8 +1,24 @@
 {
   "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
-  "active_version": "3.0.0",
-  "active_config": "luna_engine/LUNA_SOCIAL_MEDIA_CONTENT_ENGINE_V3.json",
-  "upgrade_spec": "luna_engine/LUNA_ENGINE_V3_UPGRADE_SPEC.md",
-  "base_version": "2.0.0",
-  "activation": "v3 is the active adaptive layer; all v2 identity, binary-integrity and existing platform/authority workflows remain inherited."
+  "version": "3.1.0",
+  "status": "video-generation-layer-added",
+  "orchestrator": "Composio",
+  "durable_core": "GitHub:odusomiminwa-wq/luna-media-hosting",
+  "active_social_engine": "luna_engine/LUNA_SOCIAL_MEDIA_CONTENT_ENGINE_V3.json",
+  "video_generation_layer": "luna_engine/LUNA_VIDEO_GENERATION_LAYER.json",
+  "video_generation_app": "luna_video_generator/app.py",
+  "generation_backend": "Hugging Face Inference Providers",
+  "credential_source": "HF_TOKEN secret/environment variable only; never store in repository",
+  "approval_policy": {
+    "preview_before_final": true,
+    "identity_gate_required": true,
+    "publishing_requires_confirmation": true,
+    "no_automatic_publish": true
+  },
+  "asset_integrity": {
+    "preserve_existing_identity_rules": true,
+    "master_assets_immutable": true,
+    "retired_identity_references_forbidden": true,
+    "validate_generated_video_before_publish": true
+  }
 }
