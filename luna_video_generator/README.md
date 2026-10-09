@@ -16,9 +16,9 @@ A Gradio app that sends real text-to-video or reference-guided image-to-video re
 ## Deploy as a Hugging Face Space
 
 1. Create a new Space at https://huggingface.co/new-space.
-2. Choose **Gradio**. For a free-first test, select ZeroGPU if it is offered for your account; this app's actual generation call uses Inference Providers, so provider access/credits still apply.
+2. Choose **Gradio**. Free personal accounts may be able to host a Gradio app on ZeroGPU if eligible. **This app's video rendering is performed by an Inference Provider, not by the Space's ZeroGPU**, so the provider's own access and billing rules still apply.
 3. Upload the files in this folder to the Space repository (the Space root should contain `app.py`, `requirements.txt`, and this README).
-4. In Space **Settings → Variables and secrets**, add a secret named `HF_TOKEN` with a Hugging Face token that has inference permissions.
+4. In Space **Settings → Variables and secrets**, add a secret named `HF_TOKEN` with inference permissions.
 5. Commit the files. The Space will build and start the app.
 6. Test a short prompt first. If the default model/provider combination is unavailable, choose a supported model ID and provider in the settings panel.
 
@@ -54,8 +54,8 @@ Image-to-video is only available when the chosen model/provider supports that ta
 
 ## Honest free-tier expectations
 
-Hugging Face and its inference partners control quotas, queueing, supported models, and pricing. This project does not bypass access limits and cannot guarantee unlimited free video generation. Use a provider/model that your account can access, and check the provider's current pricing before scaling.
+Hugging Face's current Inference Providers pricing documentation says free users do not receive included monthly inference credits; they must purchase credits or upgrade to a plan that includes credits. Some public/ZeroGPU Spaces can be free to try, but that is a separate route and can have queue/quota limits. This app does not bypass access limits and cannot promise unlimited free generation. Check the current [Inference Providers pricing](https://huggingface.co/docs/inference-providers/pricing) before scaling.
 
 ## Current architecture
 
-The 40-agent LUNA Social Media Content Engine remains the planning, identity, optimization, packaging, publishing, and growth layer. This app supplies the actual video-generation execution layer. Publishing remains a separate approval-controlled step.
+The 40-agent LUNA Social Media Content Engine remains the planning, identity, optimization, packaging, publishing, analytics, and growth layer. This app supplies the actual video-generation execution layer. Publishing remains a separate approval-controlled step.
