@@ -1,0 +1,47 @@
+{
+  "name": "LUNA Video Generation Execution Layer",
+  "version": "1.0.0",
+  "repository_path": "luna_video_generator/",
+  "primary_backend": "Hugging Face Inference Providers",
+  "modes": {
+    "text_to_video": {
+      "enabled": true,
+      "default_model": "Wan-AI/Wan2.1-T2V-1.3B",
+      "note": "Model/provider availability can change; verify support in the HF model/provider catalog."
+    },
+    "image_to_video": {
+      "enabled": true,
+      "default_model": null,
+      "note": "Must configure a model ID that supports image-to-video with the chosen provider."
+    }
+  },
+  "required_secret": "HF_TOKEN",
+  "runtime_variables": [
+    "HF_PROVIDER",
+    "LUNA_T2V_MODEL",
+    "LUNA_I2V_MODEL"
+  ],
+  "output": "MP4 file",
+  "workflow": [
+    "validate_prompt_and_credentials",
+    "submit_real_model_request",
+    "wait_for_provider_response",
+    "save_video_bytes",
+    "validate_output_file",
+    "human_identity_review",
+    "technical_quality_review",
+    "approval_before_publishing"
+  ],
+  "fallback": {
+    "behavior": "If model/provider fails, surface a clear error and allow operator to select a different supported model/provider.",
+    "never_fake_success": true,
+    "never_bypass_provider_limits": true
+  },
+  "constraints": [
+    "No unlimited-free-generation promise.",
+    "Never commit API tokens.",
+    "Never overwrite master identity assets.",
+    "Use only the current approved identity reference set in luna_reference/identity_rules.json.",
+    "Publishing remains approval-controlled."
+  ]
+}
