@@ -1,0 +1,246 @@
+{
+  "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
+  "version": "3.1.0-video-generation-layer",
+  "purpose": "Connect the existing 40-agent social-content workflow to an executable video-generation backend.",
+  "generation_layer": {
+    "primary": "Hugging Face Inference Providers",
+    "modes": [
+      "text-to-video",
+      "image-to-video when the selected model/provider supports it"
+    ],
+    "interface": "luna_video_generator/app.py",
+    "credential": "HF_TOKEN environment variable or Space secret; never store credentials in Git",
+    "output": "MP4 derivative file",
+    "fallback_policy": "Fail clearly and allow operator to select another supported model/provider; do not claim generation succeeded without a returned video file."
+  },
+  "agent_roles": [
+    [
+      "01",
+      "Luna Master Orchestrator",
+      "Coordinate dependencies, state, approvals, retries, and lineage."
+    ],
+    [
+      "02",
+      "Trend Intelligence Agent",
+      "Collect current trend evidence and audience signals."
+    ],
+    [
+      "03",
+      "Breakout / Outlier Analyzer",
+      "Extract channel-relative winning structures."
+    ],
+    [
+      "04",
+      "Luna Strategy Agent",
+      "Select concepts based on brand, trends, and measured performance."
+    ],
+    [
+      "05",
+      "Luna Concept Generator",
+      "Write scene concepts and narrative beats."
+    ],
+    [
+      "06",
+      "Hook Optimizer",
+      "Optimize the opening action and curiosity gap."
+    ],
+    [
+      "07",
+      "Story + Retention Agent",
+      "Design pacing, payoff, and loop."
+    ],
+    [
+      "08",
+      "Content Test Matrix Agent",
+      "Create controlled variants and isolate variables."
+    ],
+    [
+      "09",
+      "Luna Creative Director",
+      "Specify shot, movement, lighting, and cinematography."
+    ],
+    [
+      "10",
+      "Luna Reference / Identity Agent",
+      "Require current approved reference assets for identity-sensitive work."
+    ],
+    [
+      "11",
+      "Video Generation Agent",
+      "Submit the generation request to a real model/provider and collect the resulting file."
+    ],
+    [
+      "12",
+      "Identity Consistency Gate",
+      "Reject material identity drift; never infer a pass from generation success alone."
+    ],
+    [
+      "13",
+      "Video Quality / Technical Optimizer",
+      "Validate container, duration, resolution, frame integrity, and encoding."
+    ],
+    [
+      "14",
+      "Instagram Reel Optimizer",
+      "Prepare Instagram-specific framing and packaging."
+    ],
+    [
+      "15",
+      "TikTok Optimizer",
+      "Prepare TikTok-specific framing and packaging."
+    ],
+    [
+      "16",
+      "Caption + SEO Agent",
+      "Generate platform-specific captions, keywords, hashtags, and CTA."
+    ],
+    [
+      "17",
+      "Platform Adaptation Agent",
+      "Coordinate platform-specific derivatives."
+    ],
+    [
+      "18",
+      "Publishing / Distribution Agent",
+      "Route approved media to publishing; require confirmation."
+    ],
+    [
+      "19",
+      "Cross-Platform Analytics Agent",
+      "Collect and normalize available metrics."
+    ],
+    [
+      "20",
+      "Performance Feedback / Evolution Agent",
+      "Update strategy using measured evidence."
+    ],
+    [
+      "21",
+      "Brand Guardian Agent",
+      "Check brand integrity, safety, and visual standards."
+    ],
+    [
+      "22",
+      "PR & Media Intelligence Agent",
+      "Identify press opportunities and media signals."
+    ],
+    [
+      "23",
+      "Journalist Outreach Agent",
+      "Manage journalist discovery and outreach tracking."
+    ],
+    [
+      "24",
+      "Press Kit Agent",
+      "Maintain media-ready brand assets."
+    ],
+    [
+      "25",
+      "Search & Entity Agent",
+      "Improve entity consistency and discoverability."
+    ],
+    [
+      "26",
+      "Impersonation Defense Agent",
+      "Track impersonation signals and escalation records."
+    ],
+    [
+      "27",
+      "Verification Readiness Agent",
+      "Track platform verification evidence requirements."
+    ],
+    [
+      "28",
+      "Milestone Engine Agent",
+      "Track growth milestones and readiness."
+    ],
+    [
+      "29",
+      "Authority Intelligence / Blue Tick Coordinator",
+      "Coordinate authority, PR, and verification workflows."
+    ],
+    [
+      "30",
+      "Luna Binary Asset Retrieval Agent",
+      "Retrieve approved binary assets and validate integrity."
+    ],
+    [
+      "31",
+      "Luna Media Decode & Frame Extraction Agent",
+      "Extract inspection derivatives without modifying masters."
+    ],
+    [
+      "32",
+      "Luna Asset Registry & Identity Loader Agent",
+      "Load verified references and block retired substitutes."
+    ],
+    [
+      "33",
+      "Trend Freshness & Audio Intelligence Agent",
+      "Use fresh evidence for trend/audio claims; do not extract copyrighted Reel audio."
+    ],
+    [
+      "34",
+      "Hook Forensics & Pattern Library Agent",
+      "Analyze first frame, curiosity, interruption, text, audio, and payoff."
+    ],
+    [
+      "35",
+      "Retention Diagnostics Agent",
+      "Analyze available retention and engagement metrics without inventing missing data."
+    ],
+    [
+      "36",
+      "Variant Generation & Winner Replication Agent",
+      "Generate controlled variants of validated winners."
+    ],
+    [
+      "37",
+      "Experiment Allocation Agent",
+      "Select tests by evidence, confidence, novelty, and learning value."
+    ],
+    [
+      "38",
+      "Platform Timing & Packaging Intelligence Agent",
+      "Adapt opening, duration, cover, caption, CTA, and timing."
+    ],
+    [
+      "39",
+      "Content Formula Memory Agent",
+      "Record tested formulas, outcomes, confidence, and failure modes."
+    ],
+    [
+      "40",
+      "Growth Loop Decision Agent",
+      "Choose scale, iterate, hold, retire, or investigate."
+    ]
+  ],
+  "pipeline": [
+    "request",
+    "trend_and_outlier_research",
+    "strategy",
+    "concept",
+    "hook_and_retention_design",
+    "creative_direction",
+    "approved_reference_loading",
+    "video_generation_request",
+    "generation_result_validation",
+    "identity_review",
+    "technical_quality_review",
+    "platform_adaptation",
+    "caption_and_seo",
+    "human_approval",
+    "publishing",
+    "analytics",
+    "experiment_learning",
+    "growth_decision"
+  ],
+  "constraints": [
+    "A provider request is not success until a usable video file is returned.",
+    "Never overwrite immutable master/reference assets.",
+    "Never substitute retired identity references.",
+    "Never store tokens in source control.",
+    "Never auto-publish without explicit approval.",
+    "Never extract or embed copyrighted Instagram audio from other creators' content."
+  ]
+}
