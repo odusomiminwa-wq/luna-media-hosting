@@ -1,36 +1,35 @@
 {
-  "character": "Luna",
-  "identity_version": "2026-10-08-new-reference-set",
-  "identity_lock": "Preserve the exact face, freckles, hair identity, facial structure, body proportions and build defined by the new approved reference set.",
-  "authoritative_reference_set": {
-    "face_identity": {
-      "name": "Luna_Face_Identity_Green_Dress.mp4",
-      "source": "ChatGPT Library",
-      "library_path": "/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4",
-      "role": "PRIMARY_FACE_AND_IDENTITY_REFERENCE"
-    },
-    "body_proportions": {
-      "name": "Luna_Body_Proportion_Blue_Swimsuit.mp4",
-      "source": "ChatGPT Library",
-      "library_path": "/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4",
-      "role": "PRIMARY_BODY_PROPORTION_REFERENCE"
-    }
+  "character":"Luna",
+  "identity_version":"2026-10-15-reference-input-policy",
+  "identity_lock":"Preserve the exact face, freckles, hair identity, facial structure, body proportions and build defined by the approved reference set.",
+  "authoritative_reference_set":{
+    "face_identity":{"name":"Luna_Face_Identity_Green_Dress.mp4","source":"ChatGPT Library","library_path":"/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4","role":"PRIMARY_FACE_AND_IDENTITY_REFERENCE"},
+    "body_proportions":{"name":"Luna_Body_Proportion_Blue_Swimsuit.mp4","source":"ChatGPT Library","library_path":"/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4","role":"PRIMARY_BODY_PROPORTION_REFERENCE"}
   },
-  "retired_reference_set": {
-    "prior_master_image": "RETIRED_FROM_ACTIVE_IDENTITY_PIPELINE",
-    "prior_master_video": "RETIRED_FROM_ACTIVE_IDENTITY_PIPELINE",
-    "policy": "Do not use old reference assets for new generation, identity matching, body matching, or visual conditioning."
+  "candidate_attachment_policy":{
+    "default_status":"CANDIDATE_REFERENCE_PENDING_APPROVAL",
+    "runtime_behavior":"When a user explicitly supplies an image or video as a LUNA reference, pass that exact attachment to the reference/vision tool for the current run if the tool supports attachments.",
+    "attachment_access":"If direct chat attachments are not available to the connected bot, ask for an accessible URL or upload into the configured reference vault. Do not say the bot used the reference until the tool confirms access.",
+    "no_silent_promotion":true,
+    "approval_required_to_replace_master":true,
+    "video_sampling":"Sample clear representative frames only if the available tool supports it.",
+    "comparison_features":["face shape and facial structure","eye shape and colour","freckles","skin tone","hairline and hairstyle","body proportions and build where visible"],
+    "unverifiable_result":"NOT_VERIFIED"
   },
-  "approved_reference_directories": [
-    "approved_styles",
-    "approved_references"
-  ],
-  "generation_policy": {
-    "reference_required": true,
-    "material_identity_drift": "reject_and_regenerate",
-    "preview_before_final": true,
-    "face_reference_priority": "new_green_dress_reference",
-    "body_reference_priority": "new_blue_swimsuit_reference",
-    "old_references_allowed": false
+  "retired_reference_set":{
+    "prior_master_image":"RETIRED_FROM_ACTIVE_IDENTITY_PIPELINE",
+    "prior_master_video":"RETIRED_FROM_ACTIVE_IDENTITY_PIPELINE",
+    "policy":"Do not use old reference assets for new generation, identity matching, body matching, or visual conditioning."
+  },
+  "approved_reference_directories":["approved_styles","approved_references"],
+  "generation_policy":{
+    "reference_required":true,
+    "material_identity_drift":"reject_and_regenerate",
+    "preview_before_final":true,
+    "face_reference_priority":"new_green_dress_reference",
+    "body_reference_priority":"new_blue_swimsuit_reference",
+    "old_references_allowed":false,
+    "identity_gate_results":["PASS","REJECT","NOT_VERIFIED"],
+    "publishing_requires_explicit_user_approval":true
   }
 }
