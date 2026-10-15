@@ -1,42 +1,29 @@
 {
   "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
-  "registry_version": "2.0.0",
-  "updated": "2026-10-08",
+  "registry_version": "2.1.0",
+  "updated": "2026-10-15",
   "active_identity_set": "LUNA_NEW_REFERENCE_SET_2026-10-08",
   "assets": [
-    {
-      "id": "luna-face-green-dress-20261008",
-      "file": "Luna_Face_Identity_Green_Dress.mp4",
-      "source": "ChatGPT Library",
-      "library_path": "/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4",
-      "role": "PRIMARY_FACE_AND_IDENTITY_REFERENCE",
-      "status": "ACTIVE_AUTHORITATIVE",
-      "immutable_master": true
-    },
-    {
-      "id": "luna-body-blue-swimsuit-20261008",
-      "file": "Luna_Body_Proportion_Blue_Swimsuit.mp4",
-      "source": "ChatGPT Library",
-      "library_path": "/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4",
-      "role": "PRIMARY_BODY_PROPORTION_REFERENCE",
-      "status": "ACTIVE_AUTHORITATIVE",
-      "immutable_master": true
-    }
+    {"id":"luna-face-green-dress-20261008","file":"Luna_Face_Identity_Green_Dress.mp4","source":"ChatGPT Library","library_path":"/LUNA/reference/Luna_Face_Identity_Green_Dress.mp4","role":"PRIMARY_FACE_AND_IDENTITY_REFERENCE","status":"ACTIVE_AUTHORITATIVE","immutable_master":true},
+    {"id":"luna-body-blue-swimsuit-20261008","file":"Luna_Body_Proportion_Blue_Swimsuit.mp4","source":"ChatGPT Library","library_path":"/LUNA/reference/Luna_Body_Proportion_Blue_Swimsuit.mp4","role":"PRIMARY_BODY_PROPORTION_REFERENCE","status":"ACTIVE_AUTHORITATIVE","immutable_master":true}
   ],
-  "retired_assets": [
-    {
-      "role": "FORMER_MASTER_REFERENCE_IMAGE",
-      "status": "RETIRED_FROM_ACTIVE_PIPELINE"
-    },
-    {
-      "role": "FORMER_MASTER_REFERENCE_VIDEO",
-      "status": "RETIRED_FROM_ACTIVE_PIPELINE"
-    }
+  "candidate_attachment_policy": {
+    "status_default":"CANDIDATE_REFERENCE_PENDING_APPROVAL",
+    "use":"Pass an explicitly supplied reference image/video into the current agent run as a visual comparison input when the attachment is accessible to the tool.",
+    "promotion":"Never promote a candidate to an authoritative master unless the user explicitly approves the replacement.",
+    "access_failure":"If the agent cannot access chat attachments, request an accessible URL or upload into the configured reference vault. Never claim the candidate was used.",
+    "comparison":"Check face shape, eyes, freckles, skin tone, hairline/hairstyle, facial structure, and body proportions where visible; video frame sampling only when supported.",
+    "uncertain_result":"Return NOT_VERIFIED if the image/video cannot be inspected or compared reliably."
+  },
+  "retired_assets":[
+    {"role":"FORMER_MASTER_REFERENCE_IMAGE","status":"RETIRED_FROM_ACTIVE_PIPELINE"},
+    {"role":"FORMER_MASTER_REFERENCE_VIDEO","status":"RETIRED_FROM_ACTIVE_PIPELINE"}
   ],
-  "identity_rules": {
-    "face": "Green-dress reference is authoritative.",
-    "body": "Blue-swimsuit reference is authoritative.",
-    "cross_check": "The two new references previously matched visually across face, hair, facial structure and body build.",
-    "generation_gate": "Any material deviation from the active reference set must be rejected and regenerated."
+  "identity_rules":{
+    "face":"Green-dress reference is authoritative.",
+    "body":"Blue-swimsuit reference is authoritative.",
+    "cross_check":"The two active references previously matched visually across face, hair, facial structure and body build.",
+    "generation_gate":"Any material deviation from the active reference set must be rejected and regenerated only within the approved generation budget.",
+    "publishing":"Publishing remains approval-controlled; never publish without explicit user approval."
   }
 }
