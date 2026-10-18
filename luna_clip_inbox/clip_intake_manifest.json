@@ -1,0 +1,41 @@
+{
+  "system_name": "LUNA SOCIAL MEDIA CONTENT ENGINE",
+  "feature": "user_clip_intake",
+  "status": "drive_connection_pending",
+  "upload_folder_name": "LUNA Clips Inbox",
+  "source_of_truth": "Google Drive folder ID after verified creation",
+  "accepted_video_extensions": [
+    ".mp4",
+    ".mov",
+    ".m4v",
+    ".webm"
+  ],
+  "workflow_stages": [
+    "RECEIVED",
+    "VALIDATED",
+    "PROCESSING",
+    "REVIEW_REQUIRED",
+    "READY_FOR_APPROVAL",
+    "APPROVED_TO_PUBLISH",
+    "PUBLISHED",
+    "REJECTED",
+    "BLOCKED"
+  ],
+  "safeguards": {
+    "preserve_original": true,
+    "deduplicate_by_stable_file_id_and_hash": true,
+    "compare_against_approved_face_and_body_masters": true,
+    "uploaded_clip_is_not_identity_master": true,
+    "publish_requires_explicit_run_approval": true,
+    "never_claim_unperformed_visual_check": true,
+    "preserve_existing_youtube_workflows": true
+  },
+  "planned_subfolders": [
+    "01_INCOMING_CLIPS",
+    "02_PROCESSING",
+    "03_REVIEW_REQUIRED",
+    "04_APPROVED_FINALS",
+    "05_PUBLISHED_ARCHIVE"
+  ],
+  "note": "A folder upload alone does not start an automation until Drive authorization, folder ID verification, and the bot's file-discovery trigger are configured."
+}
