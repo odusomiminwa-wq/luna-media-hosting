@@ -1,0 +1,41 @@
+name: Validate LUNA Studio
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install backend dependencies
+        run: pip install -r backend/requirements.txt
+      - name: Compile backend
+        run: python -m py_compile backend/main.py
+      - name: Check API routes and health contract
+        working-directory: backend
+        run: python -c "import main; assert any(getattr(r,'path',None)=='/health' for r in main.app.routes); assert any(getattr(r,'path',None)=='/api/analyze' for r in main.app.routes); print('LUNA API routes registered')"
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify website panels and safety labels
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path('index.html').read_text()
+          required = ['Production Hub','Generated Clips Inbox','Content Strategy','AI Video Review','Analytics Lab','Growth & Verification','Publish Checklist','Backend Setup','/api/analyze','/health','No auto-publishing']
+          missing = [term for term in required if term not in html]
+          if missing:
+              raise SystemExit('Missing website features: ' + ', '.join(missing))
+          if 'OPENAI_API_KEY' in html:
+              raise SystemExit('Secret-like API key name must not be used in client-side page.')
+          print('Website feature smoke check passed')
+          PY
