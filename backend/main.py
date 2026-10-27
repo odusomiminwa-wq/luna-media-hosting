@@ -39,7 +39,7 @@ def extract_frames(path: str, output_dir: str):
     return duration, frames
 
 @app.post("/api/analyze")
-async def analyze(video: UploadFile = File(...), platform: str = Form("TikTok"), goal: str = Form("Reach & retention"), hook_notes: str = Form(""), payoff_notes: str = Form(""), caption: str = Form("")):
+async def analyze(video: UploadFile = File(...), platform: str = Form("TikTok"), goal: str = Form("Reach & retention"), context: str = Form(""), hook_notes: str = Form(""), payoff_notes: str = Form(""), caption: str = Form("")):
     api_key=os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise HTTPException(503, "AI review is not configured yet. The host needs the OPENAI_API_KEY secret before analysis can run.")
@@ -64,7 +64,7 @@ async def analyze(video: UploadFile = File(...), platform: str = Form("TikTok"),
           "Calculate overall_score as a weighted creative assessment: hook 25%, visual_clarity 20%, story_curiosity 20%, payoff 15%, caption_alignment 10%, niche_fit 5%, edit_readiness 5%; round to one decimal. Verdict guidance: POST = 8.0-10 and no major evident issue; EDIT = 6.0-7.9 or fixable issues; REWORK = below 6.0 or a fundamental mismatch. Use judgment if evidence is insufficient and say so. "
           "Return ONLY valid JSON with keys: overall_score (number 1-10), verdict (POST, EDIT, or REWORK), summary (string), score_rationale (string), scores (object with hook, visual_clarity, story_curiosity, payoff, caption_alignment, niche_fit, edit_readiness each 1-10), strengths (array of strings), fixes (array of strings), first_3_seconds (string), hook_ideas (array of exactly 3 strings), caption_suggestion (string), seo_keywords (array of strings), hashtags (array of strings), audience_fit (string), limitations (array of strings). "
           "Use creator notes as context, but do not invent events, story beats, or platform metrics absent from the evidence. Make SEO suggestions relevant rather than stuffing keywords. Make hook ideas specific to this clip and platform. "
-          f"Platform: {platform}. Goal: {goal}. Duration seconds: {duration:.1f}. Creator's opening-hook notes: {hook_notes[:1500]}. Payoff notes: {payoff_notes[:1500]}. Draft caption: {caption[:2000]}. "
+          f"Platform: {platform}. Goal: {goal}. Duration seconds: {duration:.1f}. Additional creator context: {context[:2000]}. Creator's opening-hook notes: {hook_notes[:1500]}. Payoff notes: {payoff_notes[:1500]}. Draft caption: {caption[:2000]}. "
           "Scores are creative assessments, not measured retention or guaranteed outcomes. State that sampled frames cannot verify motion, audio, or audience retention."
         )}]
         for t,p in frames:
