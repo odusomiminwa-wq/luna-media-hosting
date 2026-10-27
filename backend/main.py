@@ -84,6 +84,19 @@ async def analyze(video: UploadFile = File(...), platform: str = Form("TikTok"),
                 output=output.split("\n",1)[1].rsplit("```",1)[0].strip()
             try: result=json.loads(output)
             except json.JSONDecodeError: raise HTTPException(502, "The AI provider returned an unreadable review. Please retry.")
+            # Enforce consistent scoring server-side rather than relying only on model arithmetic.
+            score_fields = ("hook", "visual_clarity", "story_curiosity", "payoff", "caption_alignment", "niche_fit", "edit_readiness")
+            scores = result.get("scores")
+            if not isinstance(scores, dict):
+                raise HTTPException(502, "The AI provider returned a review without valid scores. Please retry.")
+            try:
+                normalized = {key: max(1, min(10, float(scores[key]))) for key in score_fields}
+            except (KeyError, TypeError, ValueError):
+                raise HTTPException(502, "The AI provider returned incomplete scores. Please retry.")
+            weights = {"hook": 0.25, "visual_clarity": 0.20, "story_curiosity": 0.20, "payoff": 0.15, "caption_alignment": 0.10, "niche_fit": 0.05, "edit_readiness": 0.05}
+            result["scores"] = {key: round(value, 1) for key, value in normalized.items()}
+            result["overall_score"] = round(sum(normalized[key] * weights[key] for key in score_fields), 1)
+            result["verdict"] = "POST" if result["overall_score"] >= 8.0 else ("EDIT" if result["overall_score"] >= 6.0 else "REWORK")
             result["duration_seconds"]=round(duration,1)
             result["sampled_frames"]=len(frames)
             result["review_type"]="AI review of sampled frames; not measured audience retention"
